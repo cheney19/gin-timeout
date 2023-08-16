@@ -19,6 +19,7 @@ var (
 func init() {
 	defaultOptions = TimeoutOptions{
 		CallBack:      nil,
+		MsgCallBack:   nil,
 		DefaultMsg:    `{"code": -1, "msg":"http: Handler timeout"}`,
 		Timeout:       3 * time.Second,
 		ErrorHttpCode: http.StatusServiceUnavailable,
@@ -82,10 +83,21 @@ func Timeout(opts ...Option) gin.HandlerFunc {
 			tw.timedOut = true
 			tw.ResponseWriter.WriteHeader(tw.ErrorHttpCode)
 
-			n, err = tw.ResponseWriter.Write(encodeBytes(tw.DefaultMsg))
-			if err != nil {
-				panic(err)
+			// execute msgcallback func
+			if tw.MsgCallBack != nil {
+				msg := tw.MsgCallBack(cp.Request)
+				n, err = tw.ResponseWriter.Write(encodeBytes(msg))
+				if err != nil {
+					panic(err)
+				}
+
+			} else {
+				n, err = tw.ResponseWriter.Write(encodeBytes(tw.DefaultMsg))
+				if err != nil {
+					panic(err)
+				}
 			}
+
 			tw.size += n
 			cp.Abort()
 

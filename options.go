@@ -6,11 +6,14 @@ import (
 )
 
 type CallBackFunc func(*http.Request)
+type MsgCallBackFunc func(*http.Request) interface{}
+
 type Option func(*TimeoutWriter)
 
 type TimeoutOptions struct {
 	CallBack      CallBackFunc
 	DefaultMsg    interface{}
+	MsgCallBack   MsgCallBackFunc
 	Timeout       time.Duration
 	ErrorHttpCode int
 }
@@ -39,5 +42,12 @@ func WithDefaultMsg(resp interface{}) Option {
 func WithCallBack(f CallBackFunc) Option {
 	return func(t *TimeoutWriter) {
 		t.CallBack = f
+	}
+}
+
+// Optional parameters
+func WithCallBack(f MsgCallBackFunc) Option {
+	return func(t *TimeoutWriter) {
+		t.MsgCallBack = f
 	}
 }
