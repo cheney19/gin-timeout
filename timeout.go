@@ -83,7 +83,7 @@ func Timeout(opts ...Option) gin.HandlerFunc {
 			tw.timedOut = true
 			tw.ResponseWriter.WriteHeader(tw.ErrorHttpCode)
 
-			// execute msgcallback func
+			// execute msgcallback func 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
 			if tw.MsgCallBack != nil {
 				msg := tw.MsgCallBack(cp.Request)
 				n, err = tw.ResponseWriter.Write(encodeBytes(msg))
