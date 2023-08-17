@@ -46,7 +46,7 @@ func WithCallBack(f CallBackFunc) Option {
 }
 
 // Optional parameters
-func WithCallBack(f MsgCallBackFunc) Option {
+func WithMsgCallBack(f MsgCallBackFunc) Option {
 	return func(t *TimeoutWriter) {
 		t.MsgCallBack = f
 	}
