@@ -4,8 +4,8 @@ import (
 	"log"
 	"time"
 
+	timeout "github.com/cheney19/gin-timeout"
 	"github.com/gin-gonic/gin"
-	timeout "github.com/vearne/gin-timeout"
 )
 
 func main() {

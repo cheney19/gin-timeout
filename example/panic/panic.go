@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"time"
 
+	timeout "github.com/cheney19/gin-timeout"
 	"github.com/gin-gonic/gin"
-	timeout "github.com/vearne/gin-timeout"
 )
 
 type errResponse struct {

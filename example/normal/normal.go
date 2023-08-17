@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"time"
 
+	timeout "github.com/cheney19/gin-timeout"
 	"github.com/gin-gonic/gin"
-	timeout "github.com/vearne/gin-timeout"
 )
 
 // test usage:
@@ -94,7 +94,7 @@ func long2(c *gin.Context) {
 
 func long3(c *gin.Context) {
 	// request a slow service
-	// see  https://github.com/vearne/gin-timeout/blob/master/example/slow_service.go
+	// see  https://github.com/cheney19/gin-timeout/blob/master/example/slow_service.go
 	url := "http://localhost:8882/hello"
 	// Notice:
 	// Please use c.Request.Context(), the handler will be canceled where timeout event happen.

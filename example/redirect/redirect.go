@@ -9,8 +9,8 @@ import (
 	"syscall"
 	"time"
 
+	timeout "github.com/cheney19/gin-timeout"
 	"github.com/gin-gonic/gin"
-	timeout "github.com/vearne/gin-timeout"
 )
 
 // test case1:

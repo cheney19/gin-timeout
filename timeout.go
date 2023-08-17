@@ -8,8 +8,8 @@ import (
 	"runtime/debug"
 	"time"
 
+	"github.com/cheney19/gin-timeout/buffpool"
 	"github.com/gin-gonic/gin"
-	"github.com/vearne/gin-timeout/buffpool"
 )
 
 var (
